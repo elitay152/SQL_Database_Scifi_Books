@@ -63,3 +63,12 @@ CREATE TABLE ratings (
 
 \COPY ratings FROM 'C:/Users/user/Documents/Ratings_Table.csv' (
     FORMAT csv, HEADER true, DELIMITER ',', ENCODING 'UTF8');
+    
+# now I can query based on conditions such as
+SELECT book_title 
+FROM books 
+LEFT JOIN genres 
+    ON books.genre_id = genres.genre_id
+WHERE year_published = 1980 AND genre = 'Science Fiction (Aliens)';
+
+# returns two titles:  'The Restaurant at the End of the Universe' and 'Sundiver'
