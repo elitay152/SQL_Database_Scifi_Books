@@ -65,7 +65,6 @@ CREATE TABLE ratings (
     FORMAT csv, HEADER true, DELIMITER ',', ENCODING 'UTF8');
 
 # once data is populated, I want the book_id primary key to start acting like a serial and auto increment
-
 CREATE SEQUENCE book_id_sequence START 11063 OWNED BY books.book_id;
 ALTER TABLE books ALTER COLUMN book_id SET DEFAULT NEXTVAL('book_id_sequence'::regclass);
 
@@ -75,7 +74,6 @@ FROM books
 LEFT JOIN genres 
     ON books.genre_id = genres.genre_id
 WHERE year_published = 1980 AND genre = 'Science Fiction (Aliens)';
-
 # returns two titles:  'The Restaurant at the End of the Universe' and 'Sundiver'
 
 # Try searching for a specific author. Will look for books by N.K. Jemisin:
